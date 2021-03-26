@@ -1,0 +1,79 @@
+----------------------------------------
+      name:  <unnamed>
+       log:  E:\UMaine\Spring (2018)\ECO
+>  485\Stata\Empirical_Project_3.log
+  log type:  text
+ opened on:  18 Mar 2019, 11:16:18
+
+. 
+. use CBP_survey.dta //choose data
+
+. 
+end of do-file
+
+. regress ln(income) age yrs_employed
+variable ln not found
+r(111);
+
+. regress log(income) age yrs_employed
+variable log not found
+r(111);
+
+. generate ln_income = ln(income)
+income not found
+r(111);
+
+. do "C:\Users\anton\AppData\Local\Temp\
+> STD1504_000000.tmp"
+
+. encode Q4, generate(income)
+
+. replace income = 5720 if Q4 == "£0 - £
+> 11,440 per year"
+(85 real changes made)
+
+. replace income = 12480.5 if Q4 == "£11
+> ,441 - £13,520 per year"
+variable income was long now double
+(54 real changes made)
+
+. replace income = 14820.5 if Q4 == "£13
+> ,521 - £16,120 per year"
+(162 real changes made)
+
+. replace income = 17420.5 if Q4 == "£16
+> ,121 - £18,720 per year"
+(194 real changes made)
+
+. replace income = 20540.5 if Q4 == "£18
+> ,721 - £22,360 per year"
+(372 real changes made)
+
+. replace income = 25220.5 if Q4 == "£22
+> ,361 - £28,080 per year"
+(462 real changes made)
+
+. replace income = 31720.5 if Q4 == "£28
+> ,081 - £35,360 per year"
+(420 real changes made)
+
+. replace income = 40300.5 if Q4 == "£35
+> ,361 - £45,240 per year"
+(191 real changes made)
+
+. replace income = 55241 if Q4 == "£45,2
+> 41 or more per year"
+(94 real changes made)
+
+. 
+end of do-file
+
+. generate ln_income = ln(income)
+(60 missing values generated)
+
+. replace num_tow = 0.0000001 if num_tow
+>  == 0
+variable num_tow not found
+r(111);
+
+. exit, clear
